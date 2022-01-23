@@ -54,3 +54,44 @@ for plan in plans:
   x, y = nx, ny
 
 print(x, y)
+
+# 시각 (예제 4-2)
+# 입력 : N
+# 00시 00분 00초부터 N시 59분 59초까지 중 3이 하나라도 포함되는     
+# 모든경우의 수를 구한다.
+
+n = int(input())
+count = 0
+# 0시 부터 N시
+for k in range(n+1):
+  # 시간에 3이 포함되어 있으면,  60분 * 60초 = 3600 추가
+  if k % 10 == 3 or int(k/10) == 3:
+      count += 3600
+  # 시간에 3이 포함되어 있지 않으면, 분을 본다.
+  else:
+    for i in range(60):
+      # 분에 3이 포함되어 있으면, 60초 = 60 추가
+      if i % 10 == 3 or int(i/10) == 3:
+        count += 60
+      # 분에 3이 포함되어 있지 않으면
+      else:
+        for j in range(60):
+          # 0부터 59까지 보면서 3이 있으면 1 추가
+          if j % 10 == 3 or int(j/10) == 3:
+            count += 1
+
+print( count )
+
+# 책 버전
+# 시분초를 '030403' 스트링으로 바꿔서 '3'이 포함되어 있으면 카운트 증가
+h = int(input())
+
+count = 0
+for i in range(h+1):
+  for j in range(60):
+    for k in range(60):
+      # 매 시각 안에 '3' 포함되어 있다면 카운트 증가
+      if '3' in str(i) + str(j) + str(k):
+        count += 1
+
+print(count)
