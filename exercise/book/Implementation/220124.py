@@ -31,4 +31,3 @@ for step in steps:
 
 # 최종 결과 출력
 print(count)
-
