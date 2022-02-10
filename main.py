@@ -52,3 +52,40 @@ for tc in range(1, int(input()) + 1):
             max_val = max(max_val, new_val)
             min_val = min(min_val, new_val)
     print(f'#{tc} {min_val} {max_val}')
+
+
+
+# SW EXPERT ACADEMY 13218, 조별 과제
+test_case = int(input())
+answers = []
+for tc in range(1, test_case+1):
+  a, b, c, d = map(int, input().split())
+  answers.append(max(min(b,d) - max(a, c),0))
+  
+for tc in range(1, test_case+1):
+  print(f'#{tc} {answers[tc-1]}')
+
+
+# SW EXPERT ACADEMY 13038, 교환학생
+
+# 풀이 방법 : 처음 수업이 언제 시작 하느냐에 따라서 학교에 머무는 총 일자가 변한다.
+# for문을 7번을 돌려(월, 화, 수, 목, 금, 토, 일) 언제 시작하는게 제일 적게 학교에 머무는지 비교한다.
+for t in range(int(input())) :
+    p = int(input())
+    week = list(map(int, input().split()))
+    result = 0
+ 
+    for i in range(7) :
+        d, n, temp = i, p, 0
+         
+        while n != 0 :
+            temp += 1
+            if week[d] == 1 : n -= 1
+             
+            if d == 6 : d = 0
+            else : d += 1
+ 
+        if i == 0 : result = temp
+        else : result = min(result, temp)
+ 
+    print(f'#{t+1} {result}')
