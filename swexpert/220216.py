@@ -11,30 +11,30 @@
 
 # 9088. 다이아몬드
 
-# for i in range(1, int(input())+1):
-#   n, k = map(int, input().split())
-#   diamond = list()
-#   temp = list()
-#   max_diamond = 0
-#   for j in range(n):
-#     diamond.append(int(input()))
+for i in range(1, int(input())+1):
+  n, k = map(int, input().split())
+  diamond = list()
+  temp = list()
+  max_diamond = 0
+  for j in range(n):
+    diamond.append(int(input()))
 
-#   diamond.sort()
+  diamond.sort()
   
-#   for j in range(0, len(diamond)):
-#     temp = []
-#     temp.append(diamond[j])
-#     for l in range(j+1, len(diamond)):
-#       if diamond[l] - diamond[j] <= k:
-#         temp.append(diamond[l])
+  for j in range(0, len(diamond)):
+    temp = []
+    temp.append(diamond[j])
+    for l in range(j+1, len(diamond)):
+      if diamond[l] - diamond[j] <= k:
+        temp.append(diamond[l])
       
-#       else:
-#         break
+      else:
+        break
 
-#     max_diamond = max(max_diamond, len(temp))
+    max_diamond = max(max_diamond, len(temp))
     
 
-#   print(f'#{i} {max_diamond}')
+  print(f'#{i} {max_diamond}')
     
       
 
