@@ -9,48 +9,62 @@
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****----------------------------------
 
-# 12222. 문자열 나누기
+# 13240 정사각형 글꼴
 
-T = int(input())
-for test_case in range(1, T + 1):
-    s = str(input())
- 
-    # 1. 가장 좋은 부분 문자열의 길이는 1이다
-    # 2. 가능하면 한 글자로 자르고 아니면 한 글자씩 더 붙인다
-    # 3. 인접한 문자열이 중복되지 않도록 검사한다 
- 
-    count = 0
-    pre = ""
-    idx = 0
-    c = ""
- 
-    while len(s)>idx:
-        c += s[idx]
-        if c != pre:
-            count += 1
-            pre = c
-            c = ""
-         
-        idx+=1
- 
-    print(f"#{test_case} {count}")
+# # 입력받은 stirng중 가장 길이가 큰 string return한다.
+# def max_len(str_list):
+#     tmp = 0
+#     for v in str_list:
+#         tmp = max(tmp, len(v))
+#     return tmp
 
-# 10580 전봇대
+# for tc in range(1, int(input())+1):
+#   h, w, n = map(int, input().split())
+#   arr = list(input().split())
+  
+#   ans = max_len(arr)
+#   # 가장 큰 스트링으로 w를 나눈 몫을 가장 큰 경우의 수로 가정하고
+#   # 하나씩 포인트를 줄이면서 조건에 맞는 포인트를 찾으면 loop 탈출
+#   ans = w//ans
+#   while ans>0:
+#       hh, ww = ans, 0
+#       for v in arr:
+#           # 다음 입력할 단어의 길이 * 포인트 크기
+#           len_str = len(v)*ans
+#           # 첫번째 단어는 바로 입력
+#           if ww==0:
+#               ww+= len_str
+#           else:
+#              # 여기서 ans는 공백이다. 그리고 이전의 ww에 다음단어와 공백을 더한다.
+#              # 한 줄의 크기가 입력받은 w보다 클 경우 줄바꿈
+#               if ww+ans+len_str > w:
+#                  # 줄을 바꿔서 높이에 포인트 크기를 더해준다
+#                   hh+=ans
+#                   # 첫번째 단어로 설정해줌
+#                   ww = len_str
+#               # 한 줄의 크기가 입력받은 w보다 작을 경우
+#               else:
+#                 # ww에 더해준다
+#                   ww += ans + len_str
+      
+#       # 조건에 맞으면 loop 탈출
+#       if hh <= h and ww <= w:
+#           break
+#       # 조건에 맞지 않으면(입력받은 사이즈를 초과할 경우)
+#       # 한 포인트 줄여서 다시 연산
+#       ans -= 1
 
-for tc in range(1, int(input())+1):
-    N = int(input()) # 전선의 개수
-    wires = [list(map(int, input().split())) for i in range(N)]  # 전선 A,B 정보
-    cnt = 0 #교점 개수
- 
-    # 선 두개씩 조합에서 전봇대 두개에서의 높이차의 부호가 같으면 교점이 없다
-    for i in range(N):
-        for j in range(i+1, N):
-            if (wires[i][0]-wires[j][0])*(wires[i][1]-wires[j][1]) < 0:
-                cnt += 1
- 
-    print(f'#{tc} {cnt}')
+#   print(f'#{tc} {ans}')
 
 
+# 10505 소득 불균형
 
+# for tc in range(1, int(input())+1):
+#   n = int(input())
+#   arr = list(map(int, input().split()))
 
+#   low = [i for i in arr if i <= sum(arr)/len(arr)]
 
+#   print(f'#{tc} {len(low)}')
+
+# 10200
