@@ -87,3 +87,17 @@ for tc in range(1, int(input())+1):
       min_n = a+b-n
 
   print(f'#{tc} {max_n} {min_n}')
+
+
+# 9700. USB 꽂기의 미스터리
+
+for tc in range(1, int(input())+1):
+  p, q = map(float, input().split())
+
+  s1 = (1-p)*q
+  s2 = p*(1-q)*q
+
+  if s1 < s2:
+    print(f'#{tc} YES')
+  else:
+    print(f'#{tc} NO')

@@ -68,22 +68,36 @@
 #   print(f'#{tc} {len(low)}')
 
 # 10200 구독자 전쟁
-for tc in range(1, int(input())+1):
-  n, a, b = map(int, input().split())
-  max_n = 0
-  min_n = 0
+# for tc in range(1, int(input())+1):
+#   n, a, b = map(int, input().split())
+#   max_n = 0
+#   min_n = 0
 
-  if a == 0 or b == 0:
-    max_n = 0
-    min_n = 0
+#   if a == 0 or b == 0:
+#     max_n = 0
+#     min_n = 0
   
-  else:
-    max_n = min(a, b)
+#   else:
+#     max_n = min(a, b)
     
-    if a+b <= n:
-      min_n = 0
+#     if a+b <= n:
+#       min_n = 0
 
-    else:
-      min_n = a+b-n
+#     else:
+#       min_n = a+b-n
 
-  print(f'#{tc} {max_n} {min_n}')
+#   print(f'#{tc} {max_n} {min_n}')
+
+
+# 9700. USB 꽂기의 미스터리
+
+for tc in range(1, int(input())+1):
+  p, q = map(float, input().split())
+
+  s1 = (1-p)*q
+  s2 = p*(1-q)*q
+
+  if s1 < s2:
+    print(f'#{tc} YES')
+  else:
+    print(f'#{tc} NO')
