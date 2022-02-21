@@ -28,6 +28,7 @@ for i in range(n):
 
   print()
 
+# 시간, 명령어 저장할 dictionary 생성
 time = {}
 l = int(input())
 for _ in range(l):
@@ -35,18 +36,24 @@ for _ in range(l):
   time[int(a)] = b
 
 t = 0
-dir_idx = 2
-i, j = 0, 0
+# 처음 방향은 오른쪽
 dir = ['left', 'top', 'right', 'bottom']
+dir_idx = 2
+
+# 꼬리, 머리 위치
 tail_x, tail_y = 0, 0
 head_x, head_y = 0, 0
+
+# 뱀을 큐로 표현
 snake = deque()
+# 맨첨 초깃값 넣어줌
 snake.append((head_x, head_y))
+
 while True:
   # 시간 추가
   t += 1
 
-  # 방향 명령어 조회
+  # 방향 명령어 조회 -> 방향 설정
   if t-1 in time.keys():
     if time[t-1] == 'L':
       dir_idx -=1
@@ -58,7 +65,7 @@ while True:
       if dir_idx == 4:
         dir_idx = 0
     
-  # 방향보고 대가리 움직임 설정
+  # 방향보고 대가리 움직임 설정 뱀의 머리가 먼저 움직임
   if dir[dir_idx] == 'right':
     head_y += 1
 
@@ -71,6 +78,7 @@ while True:
   else:
     head_y -= 1
 
+  # 뱀의 머리가 snake 큐 안에 있는 애들이랑 겹치면 ( 뱀이 자기자신과 만날때)
   if (head_x, head_y) in list(snake):
     break
   
@@ -82,6 +90,8 @@ while True:
 
   # 사과가 없을 경우
   if _map[head_x][head_y] == 0:
+
+      # 꼬리부분이 맨 앞이기 떄문에 pop left
       snake.popleft()
       if dir[dir_idx] == 'right':
         tail_y += 1
@@ -94,6 +104,8 @@ while True:
 
       else:
         tail_y -= 1
+  
+  # 사과가 있으면 사과를 없애줌
   else:
     _map[head_x][head_y] = 0
 
