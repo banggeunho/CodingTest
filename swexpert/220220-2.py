@@ -28,4 +28,3 @@ for test_case in range(1, T + 1):
             if (a,c) in edges and (b,c) in edges:
                 count = count  + 1
     print(f'#{test_case}', count)
-
