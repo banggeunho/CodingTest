@@ -11,7 +11,6 @@
 
 
 # 6057 그래프의 삼각형
-
 T = int(input())
 for test_case in range(1, T + 1):
     N, M = map(int, input().split())
@@ -29,3 +28,26 @@ for test_case in range(1, T + 1):
                 count = count  + 1
     print(f'#{test_case}', count)
 
+
+# 5948 새샘이의 7-3-5 게임
+for tc in range(1, int(input())+1):
+  arr = list(map(int, input().split()))
+  result = []
+  for i in range(len(arr)):
+    for j in range(i+1, len(arr)):
+      for k in range(j+1, len(arr)):
+        result.append(arr[i]+arr[j]+arr[k])
+
+  result.sort(reverse = True)
+  count = 1
+  max_n = result[0]
+  for i in result:
+    if i != max_n:
+      max_n = i
+      count += 1
+
+    if count == 5:
+      print(f'#{tc} {i}')
+      break
+  
+        
