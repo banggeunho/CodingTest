@@ -75,3 +75,17 @@ for tc in range(1, int(input())+1):
     print(f'#{tc} Even')
   else:
     print(f'#{tc} Odd')
+
+# 5515. 2016년 요일 맞추기
+for tc in range(1, int(input())+1):
+  m, d = map(int, input().split())
+
+  arr=[0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  days = 0
+  # m-1달 까지 달마다 날짜를 더함
+  for i in range(1, m):
+    days += arr[i]
+
+  # m달의 날짜를 더함
+  days += d  
+  print(f'#{tc} {(days%7 + 3) % 7}')
