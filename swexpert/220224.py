@@ -67,3 +67,11 @@ for tc in range(1, int(input())+1):
   for i in range(1, len(box)):
     print(box[i], end=' ')
   print()
+
+# 5789. 현주의 상자 바꾸기
+for tc in range(1, int(input())+1):
+  n = input()
+  if int(n[-1]) % 2 == 0:
+    print(f'#{tc} Even')
+  else:
+    print(f'#{tc} Odd')
