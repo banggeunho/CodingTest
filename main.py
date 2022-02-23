@@ -10,44 +10,19 @@
 #-------------------------****----------------------------------
 
 
-# 5986. 새샘이와 세 소수
+# 5789. 현주의 상자 바꾸기
 
-def isPrimeNum(n):
-  count = 0
-  idx = 0
-  for i in range(2, n+1):
-    if n%i == 0:
-      count += 1
-      idx = i
-      break
-
-  if idx == n and count == 1:
-    return True
-
-  return False
-    
-  
 for tc in range(1, int(input())+1):
-  n = int(input())
-  count = 0
-  primeNum = [i for i in range(2, 1000) if isPrimeNum(i)]
-  stop = False
-  # print(primeNum)
-  for i in range(0, len(primeNum)):
-    for j in range(i, len(primeNum)):
-      if primeNum[i]+primeNum[j] > n:
-        stop = True
-        break
-      # print(primeNum[i], primeNum[j], n-(primeNum[i]+primeNum[j]))
-        
-      if n-(primeNum[i]+primeNum[j]) in primeNum and (n-(primeNum[i]+primeNum[j]) >= primeNum[j] >= primeNum[i]):
-        count += 1
-        # print('OK')
+  n, q = map(int, input().split())
+  box = [0 for _ in range(n+1)]
+  
+  for i in range(1, q+1):
+    l, r = map(int, input().split())
+    for j in range(l, r+1):
+      box[j] = i
 
-      elif primeNum[j] > n-(primeNum[i]+primeNum[j]):
-        break
-      
-    if stop:
-      break
-      
-  print(f'#{tc} {count}')
+  print(f'#{tc}', end=' ')
+  for i in range(1, len(box)):
+    print(box[i], end=' ')
+  print()
+

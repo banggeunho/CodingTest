@@ -51,3 +51,19 @@ for tc in range(1, int(input())+1):
       break
       
   print(f'#{tc} {count}')
+
+# 5789. 현주의 상자 바꾸기
+
+for tc in range(1, int(input())+1):
+  n, q = map(int, input().split())
+  box = [0 for _ in range(n+1)]
+  
+  for i in range(1, q+1):
+    l, r = map(int, input().split())
+    for j in range(l, r+1):
+      box[j] = i
+
+  print(f'#{tc}', end=' ')
+  for i in range(1, len(box)):
+    print(box[i], end=' ')
+  print()
