@@ -10,16 +10,20 @@
 #-------------------------****----------------------------------
 
 
-# 5431. 민석이의 과자 체크하기
+# 5356. 의석이의 세로로 말해요
 for tc in range(1, int(input())+1):
   str = []
   for i in range(5):
     str.append(list(input()))
 
-  answer = ""
-  for i in range(len(str)):
+  print(f'#{tc} ', end='')
+  for i in range(15):
     for j in range(len(str)):
-      print(str[j][i])
+      if len(str[j]) < i+1:
+        continue
+      print(str[j][i], end='')
+
+  print()
 
   
     

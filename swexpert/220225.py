@@ -26,3 +26,17 @@ for tc in range(1, int(input())+1):
   print()
     
 
+# 5356. 의석이의 세로로 말해요
+for tc in range(1, int(input())+1):
+  str = []
+  for i in range(5):
+    str.append(list(input()))
+
+  print(f'#{tc} ', end='')
+  for i in range(15):
+    for j in range(len(str)):
+      if len(str[j]) < i+1:
+        continue
+      print(str[j][i], end='')
+
+  print()
