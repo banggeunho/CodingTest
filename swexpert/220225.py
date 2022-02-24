@@ -12,15 +12,17 @@
 
 # 5431. 민석이의 과자 체크하기
 for tc in range(1, int(input())+1):
-  str = []
-  for i in range(5):
-    str.append(list(input()))
+  n, k = map(int, input().split())
+  arr = [i for i in range(1, n+1)]
+  send = list(map(int, input().split()))
+  for i in range(k):
+    arr.remove(send[i])
 
-  answer = ""
-  for i in range(len(str)):
-    for j in range(len(str)):
-      print(str[j][i])
+  print(f'#{tc}', end=' ')
+  arr.sort()
+  for i in arr:
+    print(i, end= ' ')
 
-  
+  print()
     
 
