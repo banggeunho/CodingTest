@@ -66,3 +66,14 @@ for tc in range(1, int(input())+1):
             
 
   print(f'#{tc} {max_taste}')
+
+
+# 5162. 두가지 빵의 딜레마
+for tc in range(1, int(input())+1):
+
+  a, b, c = map(int, input().split())
+  if a == b:
+    print(f'{tc} {c // a}')
+  else:
+    min_cost = min(a, b)
+    print(f'#{tc} {c // min_cost}')
