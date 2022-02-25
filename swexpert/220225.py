@@ -110,15 +110,27 @@ for tc in range(1, int(input())+1):
   d, a, b = map(int, input().split())
   cnt = 0
 
-  for i in prime:
-    if a > i:
-      continue
-      
-    elif i > b:
-      break
-
-    else:
-      if str(d) in str(i):
-        cnt += 1
         
   print(f'#{tc} {cnt}')
+
+# 4579 세상의 모든 팰린드롬 2
+for tc in range(1, int(input())+1):
+  pattern = input()
+  result = "Exist"
+  for i in range(0, len(pattern)//2):
+    # 별표가 있으면 exist 처리
+    if pattern[i] == '*' or pattern[len(pattern)-1-i] == '*':
+      break
+
+    # 별표가 아니면서 글자가 다르면 not exist ex) ac*ba
+    if pattern[i] != pattern[len(pattern)-1-i]:
+      result = "Not exist"
+      break
+
+
+
+  # 한글자일때
+  if len(pattern) <= 1:
+    result = "Exist"
+    
+  print(f'#{tc} {result}')
