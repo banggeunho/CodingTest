@@ -9,20 +9,33 @@
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****----------------------------------
 
-# 4789. 성공적인 공연 기획
+# 4698 테네스의 특별한 소수
+import math
+def is_prime_number(x):
+    # 2부터 x의 제곱근까지의 모든 수를 확인하며
+    for i in range(2, int(math.sqrt(x)) + 1):
+        # x가 해당 수로 나누어떨어진다면
+        if x % i == 0:
+            return False # 소수가 아님
+    return True # 소수임
+  
+prime = [i for i in range(2, 1000001) if is_prime_number(i)]
+
 for tc in range(1, int(input())+1):
-  str = input()
-  cur = 0
-  answer = 0
-  for i in range(len(str)):
-    if cur >= i:
-      cur += int(str[i])
+  d, a, b = map(int, input().split())
+  cnt = 0
+
+  for i in prime:
+    if a > i:
+      continue
+      
+    elif i > b:
+      break
 
     else:
-      answer += i-cur
-      cur += i-cur + int(str[i])
+      if str(d) in str(i):
+        cnt += 1
+        
+  print(f'#{tc} {cnt}')
 
-  print(f'#{tc} {answer}')
-      
-    
 
