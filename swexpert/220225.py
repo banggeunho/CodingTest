@@ -77,3 +77,19 @@ for tc in range(1, int(input())+1):
   else:
     min_cost = min(a, b)
     print(f'#{tc} {c // min_cost}')
+
+
+# 4789. 성공적인 공연 기획
+for tc in range(1, int(input())+1):
+  str = input()
+  cur = 0
+  answer = 0
+  for i in range(len(str)):
+    if cur >= i:
+      cur += int(str[i])
+
+    else:
+      answer += i-cur
+      cur += i-cur + int(str[i])
+
+  print(f'#{tc} {answer}')

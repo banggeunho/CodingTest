@@ -9,15 +9,20 @@
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****----------------------------------
 
-# 5162. 두가지 빵의 딜레마
+# 4789. 성공적인 공연 기획
 for tc in range(1, int(input())+1):
+  str = input()
+  cur = 0
+  answer = 0
+  for i in range(len(str)):
+    if cur >= i:
+      cur += int(str[i])
 
-  a, b, c = map(int, input().split())
-  if a == b:
-    print(f'{tc} {c // a}')
-  else:
-    min_cost = min(a, b)
-    print(f'#{tc} {c // min_cost}')
+    else:
+      answer += i-cur
+      cur += i-cur + int(str[i])
+
+  print(f'#{tc} {answer}')
       
     
 
