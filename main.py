@@ -8,24 +8,44 @@
 # N의 범위가 100,000인 경우 : 시간 복잡도가 O(NlogN)인 알고리즘을 설계
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****----------------------------------
+
+# # 4466 최대 성적표 만들기
+# for tc in range(1, int(input())+1):
+#   N, K = map(int, input().split())
+#   arr = list(map(int, input().split()))
+#   arr.sort(reverse=True)
+#   result = 0
+#   for i in range(K):
+#     result += arr[i]
+
+#   print(f'#{tc} {result}')
+      
+# 4406 모음이 보이지 않는 사람
 for tc in range(1, int(input())+1):
   str = list(input())
-  
-  for i in range(0, len(str)//2):
-    if str[i] == '?' or str[len(str)-1-i] == '?':
-      str[i], str[len(str)-1-i] = '?', '?'
-  
-  if str == str[::-1]:
-    print(f'#{tc} Exist')
 
-  else:
-    print(f'#{tc} Not exist')
+  mo = ['a','e','i','o','u']
+  print(f'#{tc}', end=' ')
+  for alpha in str:
+    if alpha not in mo:
+      print(alpha, end='')
+  print()
 
-  
+# 4371 항구에 들어오는 배
 
+for tc in range(1, int(input())+1):
+  n = int(input())
+  arr = [int(input()) for _ in range(n)]
+       
+  # 첫번째 배는 무조건 1이 들어온다는 가정하에 풀이
+  for i in arr[1:]:
+    # 두번째-첫번째=주기,로 지정 후에 마지막까지 검사
+    # 세번째-첫번째 주기, 네번째-첫번째 주기.......
+    # array가 다 지워질때까지............
+    for j in range(2*i-1, arr[-1]+1, i-1):
+      if j in arr:
+        arr.remove(j)
 
-  
-    
-
-  
-  
+  print(f'#{tc} {arr[1:]}')
+        
+      

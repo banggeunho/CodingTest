@@ -8,6 +8,8 @@
 # N의 범위가 100,000인 경우 : 시간 복잡도가 O(NlogN)인 알고리즘을 설계
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****----------------------------------
+
+# 4522. 세상의 모든 팰린드롬
 for tc in range(1, int(input())+1):
   str = list(input())
   
@@ -22,7 +24,16 @@ for tc in range(1, int(input())+1):
     print(f'#{tc} Not exist')
 
   
+# 4406 모음이 보이지 않는 사람
+for tc in range(1, int(input())+1):
+  str = list(input())
 
+  mo = ['a','e','i','o','u']
+  print(f'#{tc}', end=' ')
+  for alpha in str:
+    if alpha not in mo:
+      print(alpha, end='')
+  print()
 
   
     
