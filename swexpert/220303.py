@@ -35,6 +35,22 @@ for tc in range(1, int(input())+1):
       print(alpha, end='')
   print()
 
+# 4371 항구에 들어오는 배
+
+for tc in range(1, int(input())+1):
+  n = int(input())
+  arr = [int(input()) for _ in range(n)]
+       
+  # 첫번째 배는 무조건 1이 들어온다는 가정하에 풀이
+  for i in arr[1:]:
+    # 두번째-첫번째=주기,로 지정 후에 마지막까지 검사
+    # 세번째-첫번째 주기, 네번째-첫번째 주기.......
+    # array가 다 지워질때까지............
+    for j in range(2*i-1, arr[-1]+1, i-1):
+      if j in arr:
+        arr.remove(j)
+
+  print(f'#{tc} {arr[1:]}')
   
     
 
