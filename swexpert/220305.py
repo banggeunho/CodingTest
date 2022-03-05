@@ -58,3 +58,18 @@ for tc in range(1, int(input())+1):
 
   if not error:
     print(f'#{tc} {len(s)} {len(d)} {len(h)} {len(c)}')
+
+
+# 3975 승률 비교하기
+answer = []
+for tc in range(1, int(input())+1):
+  a, b, c, d = map(int, input().split())
+  if (a/b) > (c/d):
+    answer.append('ALICE')
+  elif (a/b) < (c/d):
+    answer.append('BOB')
+  else:
+    answer.append('DRAW')
+
+for tc, i in enumerate(answer):
+  print(f'#{tc+1} {i}')
