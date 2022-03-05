@@ -10,3 +10,51 @@ for tc in range(1, int(input())+1):
 
   else:
     print(f'#{tc} {-1}')
+
+
+
+# 4077 영준이의 카드 카운팅
+for tc in range(1, int(input())+1):
+  arr = input()
+  s = [i for i in range(1, 14)]
+  d = [i for i in range(1, 14)]
+  h = [i for i in range(1, 14)]
+  c = [i for i in range(1, 14)]
+  error = False
+
+  for i in range(0, len(arr), 3):
+    if arr[i] == 'S':
+      if int(arr[i+1:i+3]) in s:
+        s.remove(int(arr[i+1:i+3]))
+      else:
+        print(f'#{tc} ERROR')
+        error = True
+        break
+
+    elif arr[i] == 'D':
+      if int(arr[i+1:i+3]) in d:
+        d.remove(int(arr[i+1:i+3]))
+      else:
+        print(f'#{tc} ERROR')
+        error = True
+        break
+
+    elif arr[i] == 'H':
+      if int(arr[i+1:i+3]) in h:
+        h.remove(int(arr[i+1:i+3]))
+      else:
+        print(f'#{tc} ERROR')
+        error = True
+        break
+
+    else:
+      if int(arr[i+1:i+3]) in c:
+        c.remove(int(arr[i+1:i+3]))
+      else:
+        print(f'#{tc} ERROR')
+        error = True
+        break
+
+
+  if not error:
+    print(f'#{tc} {len(s)} {len(d)} {len(h)} {len(c)}')
