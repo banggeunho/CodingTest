@@ -1,5 +1,5 @@
 # 코딩테스트 대비 기초 문제 풀이 
-# Date : 2022. 03. 04.
+# Date : 2022. 03. 07.
 # 구현 문제 풀이
 # https://www.acmicpc.net/problem/14888
 #-------------------------****----------------------------------
@@ -10,21 +10,93 @@
 #-------------------------****----------------------------------
 
 
-# 3809 화섭이의 정수 나열
-for tc in range(1, int(input())+1):
-  n = int(input())
-  arr = []
+# 18428 감시피하기
 
-  while len(arr) < n:
-    arr.extend(list(input().split()))
+import itertools
+
+arr = []
+x_pos = []
+solve = True
+n = int(input())
+for i in range(n):
+  arr.append(list(input().split()))
+  for j in range(n):
+    if arr[i][j] == 'X':
+      x_pos.append((i, j))
+
+candidates = itertools.combinations(x_pos, 3)
+
+dx = [0, 0, -1, 1]
+dy = [1, -1, 0, 0]
+
+def dfs(x, y, arr):
+  global dx, dy, n
+  # print(x, y)
+  
+  for i in range(4):
+    nx = x + dx[i]
+    ny = y + dy[i]
+
+    if nx < 0 or nx >=n or ny < 0 or ny >= n:
+      continue
+      
+    # print('사방향 검사', nx, ny)
+    if arr[nx][ny] == 'S':
+      # print('학생 찾음')
+      return False
+
+    if arr[nx][ny] == 'O':
+      # print('장애물')
+      continue
     
-  s = ''.join(arr)
-  i = 0
-  while True:
-    if str(i) not in s:
-      print(f'#{tc} {i}')
-      break
-    i += 1
+    if arr[nx][ny] == 'X':
+      while True:
+        nx += dx[i]
+        ny += dy[i]
+
+        if nx < 0 or nx >=n or ny < 0 or ny >= n:
+          break
+          
+        # print('진입',nx,ny)
+        if arr[nx][ny] == 'O':
+          # print('장애물')
+          break
+
+        if arr[nx][ny] == 'S':
+          # print('학생 찾음')
+          return False
+          
+  return True
+
+    
+for candidate in candidates:   
+  solve = True
+  for x, y in candidate:
+    arr[x][y] = 'O'
+
+  # for i in range(n):
+  #   for j in range(n):
+  #     print(arr[i][j], end=' ')
+  #   print()
+    
+  for i in range(n):
+    for j in range(n):
+      if arr[i][j] == 'T' and solve:
+        solve = dfs(i, j, arr)
+
+
+  if solve:
+    print('YES')
+    break
+
+  for x, y in candidate:
+    arr[x][y] = 'X'
+    
+if not solve:
+  print('NO')
+  
+
+
       
     
     
