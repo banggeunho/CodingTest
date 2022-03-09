@@ -37,4 +37,18 @@ for tc in range(1, int(input())+1):
       break
 
   
-  
+# 3431 준환이의 운동 관리
+for test_case in range(1, int(input()) + 1):
+  a, b, c = map(int, input().split())
+  if c < a:
+    print(f'#{test_case} {a-c}')
+  elif b < c:
+    print(f'#{test_case} {-1}')
+  elif a <= c <= b:
+    print(f'#{test_case} {0}')
+
+
+# 3408 세가지의 합
+for tc in range(1, int(input())+1):
+  n = int(input())
+  print(f'#{tc} {n*(n+1)//2} {n*n} {n*(n+1)}')

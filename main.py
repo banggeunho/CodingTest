@@ -7,21 +7,7 @@
 # N의 범위가 100,000인 경우 : 시간 복잡도가 O(NlogN)인 알고리즘을 설계
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****----------------------------------
-# 3456 직사각형 길이 찾기
+# 3408 세가지의 합
 for tc in range(1, int(input())+1):
-  arr = list(map(int, input().split()))
-  
-  for i in arr:
-    if arr.count(i) < 2:
-      print(f'#{tc} {i}')
-      break
-
-    if arr.count(i) > 2:
-      print(f'#{tc} {i}')
-      break
-
-
-
-
-  
-  
+  n = int(input())
+  print(f'#{tc} {n*(n+1)//2} {n*n} {n*(n+1)}')
