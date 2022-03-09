@@ -22,5 +22,19 @@ for tc in range(1, int(input())+1):
 for i in range(len(answer)):
   print(f'#{i+1} {answer[i]}')
 
+
+# 3456 직사각형 길이 찾기
+for tc in range(1, int(input())+1):
+  arr = list(map(int, input().split()))
+  
+  for i in arr:
+    if arr.count(i) < 2:
+      print(f'#{tc} {i}')
+      break
+
+    if arr.count(i) > 2:
+      print(f'#{tc} {i}')
+      break
+
   
   
