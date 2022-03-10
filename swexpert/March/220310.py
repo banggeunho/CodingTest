@@ -13,3 +13,14 @@ for tc in range(1, int(input())+1):
   for i in range(len(arr)-1, n):
     arr.append(arr[i]+arr[i-4])
   print(f'#{tc} {arr[n-1]}')
+
+
+# 3314 보충학습과 평균
+for tc in range(1, int(input())+1):
+  students = list(map(int, input().split()))
+  total = 0
+  for score in students:
+    if score < 40:
+      score = 40
+    total += score
+  print(f'#{tc} {total//len(students)}')
