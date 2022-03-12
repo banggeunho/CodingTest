@@ -32,4 +32,3 @@ arr = list(map(int, input().split()))
 
 fixed_point = search_fixed_point(arr, 0, n-1)
 print(fixed_point)
-    
