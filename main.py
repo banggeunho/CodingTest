@@ -7,8 +7,17 @@
 # N의 범위가 100,000인 경우 : 시간 복잡도가 O(NlogN)인 알고리즘을 설계
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****------------------------------------
-# 두 수의 덧셈 3260
-for tc in range(1, int(input())+1):
-  a, b = map(int, input().split())
-  print(f'#{tc} {a+b}')
+# 3131 100만 이하의 모든 소수
+import math
+
+def isPrime(n):
+  for i in range(2, int(math.sqrt(n)+1)):
+    if n % i == 0:
+      return False
+  return True
+  
+for i in range(2, 1000001):
+  if isPrime(i):
+    print(i, end=' ')
+  
     
