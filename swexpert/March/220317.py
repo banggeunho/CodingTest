@@ -22,6 +22,21 @@ for tc in range(1, int(input())+1):
     
   print(f'#{tc} {result}')
 
+# 2805 농작물 수확하기
 
+for tc in range(1, int(input())+1):
+  n = int(input())
+  result = 0
+  for i in range(n//2, -1, -1):
+      s = input()
+      for j in range(i, n-i):
+        result += int(s[j])
+      # 2 1 0 1 2
+  for i in range(1, n//2+1):
+      s = input()
+      for j in range(i, n-i):
+        result += int(s[j])   
+      
+  print(f'#{tc} {result}')
   
       
