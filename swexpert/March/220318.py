@@ -37,7 +37,39 @@ for tc in range(1, int(input())+1):
   print(f'#{tc} {ans}')
         
       
+
+# 1860. 진기의 최고급 붕어빵
+for tc in range(1, int(input())+1):
+  n, m, k = map(int, input().split())
+  cus = list(map(int, input().split()))
+  cus.sort()
+  total, prev, cnt = 0
+  solve = True
+  for i in cus:
+    if i//m >= 1 and i//m != prev:
+      cnt += 1
+      total = (i//m)*k-cnt
+      prev = i//m
+
+    elif total > 0:
+      total -= 1
+      cnt += 1
+
+    elif i == 0:
+      print(f'#{tc} Impossible')
+      solve = False
+      break
+      
+    else:
+      print(f'#{tc} Impossible')
+      solve = False
+      break
         
+  if solve:
+    print(f'#{tc} Possible')
+    
+    
+  
     
     
   
