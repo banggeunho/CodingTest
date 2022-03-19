@@ -32,6 +32,19 @@ for tc in range(1, int(input())+1):
   print(f'#{tc} {cnt}')
 
 
+# 1491 ㅇ우워원웑재쟁으의 ㅂ벼벽 ㄲㄲㅜㅁ미믹기
+for tc in range(1, int(input())+1):
+  n, a, b = map(int, input().split())
+  result = 9876543211234
+  for r in range(1, n+1):
+    for c in range(1, n+1):
+      if r*c > n or r < c:
+        break
+      result = min(result, a*abs(r-c)+b*(n-r*c))
+  print(f'#{tc} {result}')
+
+
+
   
     
     
