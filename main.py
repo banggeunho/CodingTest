@@ -7,27 +7,17 @@
 # N의 범위가 100,000인 경우 : 시간 복잡도가 O(NlogN)인 알고리즘을 설계
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****------------------------------------
-# 백준 14501 퇴사
+# 백준 18353 병사배치하기
 n = int(input())
-t = []
-p = []
-dp = [0]*(n+1)
-max_value = 0
+arr = list(map(int, input().split()))
+arr.reverse()
+dp = [1]*n
 for i in range(n):
-    a, b = map(int, input().split())
-    t.append(a)
-    p.append(b)
+    for j in range(i):
+        if arr[j] < arr[i]:
+            dp[i] = max(dp[i], dp[j]+1)
 
-for i in range(n-1, -1, -1):
-    # 현재날짜 + 걸리는 날짜
-    time = t[i] + i
-    if time <= n:
-        # 현재 임금 + 시간이 지난후 받을 수 있는 최대 임금
-        dp[i] = max(p[i]+dp[time], max_value)
-        max_value = dp[i]
-    else:
-        dp[i] = max_value
-print(max_value)
+print(n - max(dp))
 
 
   
