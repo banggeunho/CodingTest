@@ -7,37 +7,95 @@
 # N의 범위가 100,000인 경우 : 시간 복잡도가 O(NlogN)인 알고리즘을 설계
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****------------------------------------
-# 최소 편집 거리(Edit Distance) 계산을 위한 다이내믹 프로그래밍
-def edit_dist(str1, str2):
-    n = len(str1)
-    m = len(str2)
-    
-    # dp 테이블 초기화
-    dp = [[0]*(m+1) for _ in range(n+1)]
-    
-    # DP 테이블 초기 설정
-    for i in range(1, n+1):
-        dp[i][0] = i
-    for j in range(1, m+1):
-        dp[0][j] = j
-    
-    # 최소 편집 거리 계산
-    for i in range(1, n+1):
-        for j in range(1, m+1):
-            # 문자가 같다면, 왼쪽 위의 해당하는 수 대입
-            if str1[i-1] == str2[i-1]:
-                dp[i][j] = dp[i - 1][j - 1]
-            # 문자가 다르다면, 3가지 경우 증에서 최솟값 찾기
-            else: #삽입(왼쪽), 교체(왼쪽 위) 중에서 최소 비용을 찾아 대입
-                dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1])
-    
-    return dp[n][m]
 
-str1 = input()
-str2 = input()
 
-print(edit_dist(str1, str2))
+#11404 플로이드 (백준)
+n = int(input())
+m = int(input())
+INF = int(1e9)
+graph = [[INF]*(n+1) for _ in range(n+1)]
+for _ in range(m):
+  a, b, c = map(int, input().split())
+  # 노선이 하나가 아닐 수도 있음.
+  graph[a][b] = min(graph[a][b], c)
 
+# floyd-warshall algorithm
+for k in range(1, n+1):
+# 출발 지점과 도착 지점이 같은 곳은 0으로 초기화
+  graph[k][k] = 0
+  for i in range(1, n+1):
+    for j in range(1, n+1):
+        graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+
+# 결과 출력
+for i in range(1, n+1):
+  for j in range(1, n+1):
+    if graph[i][j] == INF:
+      graph[i][j] = 0
+    print(graph[i][j], end=' ')
+  print()
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import heapq
+# import sys
+
+# input = sys.stdin.readline
+# INF = int(1e9)
+
+# n, m = map(int, input().split())
+# start = int(input())
+# graph = [[] for i in range(n+1)]
+# distance = [INF]*(n+1)
+
+# for _ in range(m):
+#   a, b, c = map(int, input().split())
+#   graph[a].append((b, c))
+
+# def dijkstra(start):
+#   q = []
+#   # 시작 노드로 가기 위한 최단 경로는 0으로 설정하며, 큐에 삽입
+#   heapq.heappush(q, (0, start))
+#   distance[start] = 0
+
+#   while q: # 큐가 비어있지 않다면
+#     # 가장 최단 거리가 짧은 노드에 대한 정보 꺼내기
+#     dist, now = heapq.heappop(q)
+#     # 현재 노드가 이미 처리된 적이 있는 노드라면 무시
+#     if distance[now] < dist:
+#       continue
+#     # 현재 노드와 연결된 다른 인접한 노드들을 확인
+#     for i in graph[now]:
+#       cost = dist + i[1]
+#       # 현재 노드를 거쳐서, 다른 노드로 이동하는 거리가 더 짧은 경우
+#       if cost < distance[i[0]]:
+#         distance[i[0]] = cost
+#         heapq.heappush(q,(cost, i[0]))
+
+# # 다익스트라 알고리즘으로
+# dijkstra(start)
+
+# # 모든 노드로 가기 위한 최단 거리를 출력
+# for i in range(1, n+1):
+#   # 도달할 수 없는 경우, 무한(infinity)이라고 출력
+#   if distance[i] == INF:
+#     print('INFINITY')
+#   else:
+#     print(distance[i])
   
     
     
