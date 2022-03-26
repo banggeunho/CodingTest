@@ -18,60 +18,75 @@
 # 최종적으로 위치들의 후보들을 갖고 정렬을 수행해 적절한 위치를 뽑아내어 학생으로 업데이트 해준다.
 
 # 자리 배치가 완성되면 처음부터 map을 살펴보면서 점수를 구하면 된다.
+from collections import deque
 
 n = int(input())
-graph = [[0]*n for _ in range(n)]
-students={}
-for i in range(n**2):
-    arr = list(map(int, input().split())) # 0번은 당사자 1번부턴 좋아하는 학생
-    students[arr[0]] = arr[1:] # 순서에 관여없이 저장하기 위해 dict로 선언
+graph = []
+s_size = 2
+s_x, s_y = 0, 0
+result = 0
+# 공간 입력 받기
+for i in range(n):
+  data = list(map(int, input().split()))
+  graph.append(data)
 
+# 먹을 수 있는 물고기가 2마리 이상일때
+# 주변으로 이동했을떄 타겟팅한 물고기와의 위치를 연산해서 최솟값을 나타내는 부분을 찾아야함
 
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
 
-# 좋아하는 학생 번호를 하나씩 뜯어보면서 적절한 위치를 찾아 update 해준다.
-for student, likes in students.items():
-    candidates = []
-    for x in range(n):
-        for y in range(n):
-            like, empty = 0, 0
-            if graph[x][y] == 0:
-                for i in range(4):
-                    nx = x+dx[i]
-                    ny = y+dy[i]
-                    if 0 <= nx < n and 0 <= ny < n:
-                        if graph[nx][ny] in likes:
-                            like += 1
-                        elif graph[nx][ny] == 0:
-                            empty += 1
-                candidates.append([like, empty, n-x, n-y])
-    candidates.sort()
-    selected = candidates[-1]
-    graph[abs(selected[2]-n)][abs(selected[3]-n)] = student
-
-# 점수를 구하는 부분
-result = 0
-for i in range(n):
+while True:
+  count = 0 # 먹을 수 있는 물고기 몇마리
+  eated = 0 # 물고기 몇마리 먹었는지
+  eat = []
+  for i in range(n):
     for j in range(n):
-        count = 0
-        for k in range(4):
-            nx = i + dx[k]
-            ny = j + dy[k]
-            if 0 <= nx < n and 0 <= ny < n:
-                if graph[nx][ny] in students[graph[i][j]]:
-                    count += 1
+      if 0 < graph[i][j] < s_size:
+        count += 1
+        eat.append((i, j))
+      if graph[i][j] == 9:
+        s_x, s_y = i, j # 상어 위치 
 
-        if count == 1:
-            result += 1
-        elif count == 2:
-            result += 10
-        elif count == 3:
-            result += 100
-        elif count == 4:
-            result += 1000
+  eat.sort()
+  if count == 0:
+    break
+  
+  else:
+    temp = 0 # 몇칸 이동했는지
+    visited = [[False]*n for _ in range(n)] # 방문했는지
+    t_x, t_y = eat[0] # 먹을 물고기의 위치
+    q = deque()
+    q.append((s_x, s_y, temp))
+    visited[s_x][s_y] = True
 
+    while q:
+      x, y, temp = q.popleft() # 상어의 현재 위치
+
+      if (x, y) == (t_x, t_y): # 물고기의 위치 일 경우
+        result += temp 
+        eated += 1
+        if eated == s_size: # 레벨업(크기 증가)
+          eated = 0
+          s_size += 1
+        break
+      # 상하좌우 살피기
+      for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny]:
+          if graph[nx][ny] <= s_size: # 물고기의 크기가 상어랑 사이즈가 동일하거나 작으면 이동가능
+            q.append((nx, ny, temp+1))
+            visited[nx][ny] = True          
+    
 print(result)
+      
+
+  # 상어가 먹을 수 있는 물고기 위치, 갯수 카운트
+
+# 상어의 크기, result(이동한 칸의 갯수), 이동명령, 먹을 수 있는 상어의 갯수(위치), 현재위치
+# 이동하는 방법, 거리 구하기(최솟값),
+
     
     
   
