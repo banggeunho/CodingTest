@@ -1,0 +1,40 @@
+// WHERE과 IN을 사용해 특정한 값을 갖고있는 데이터를 가져오기
+
+SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+WHERE NAME IN ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
+
+
+// 특정 데이터에 특정 스트링을 포함하고 있는지 확인할 경우
+// LIKE '%~%' 사용
+  
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE ANIMAL_TYPE = "Dog"
+AND NAME LIKE '%el%'
+ORDER BY NAME
+
+
+// CASE문을 이용하여 조건문으로 만들어버리기
+// CASE->WHEN (조건) THEN -> ELSE -> END
+  
+SELECT ANIMAL_ID, NAME,
+    CASE 
+        WHEN SEX_UPON_INTAKE LIKE '%Intact%' THEN 'X'
+        ELSE 'O'
+    END AS 중성화
+FROM ANIMAL_INS
+
+// 데이트타임 연산 가능
+SELECT A.ANIMAL_ID, A.NAME
+FROM ANIMAL_INS AS A LEFT JOIN ANIMAL_OUTS AS B
+ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE B.ANIMAL_ID IS NOT NULL
+ORDER BY (B.DATETIME - A.DATETIME) DESC
+LIMIT 2
+
+
+// DATETIME -> DATE로 변환하기
+SELECT ANIMAL_ID, NAME,
+       DATE_FORMAT(DATETIME, '%Y-%m-%d') AS 날짜
+FROM ANIMAL_INS
