@@ -24,3 +24,5 @@ def solution(n, times):
             start = mid + 1
             
     return answer
+
+
