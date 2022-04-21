@@ -1,5 +1,5 @@
 # BFS, DFS 뭘 써도 다 풀기 가능
-# PARENT LIST 선언 후 PARENT가 지정 안되어있는 경우만 NODE 방문ㅇㅈ?
+# PARENT LIST 선언 후 PARENT가 지정 안되어있는 경우만 NODE 방문ㅇㅈ? ㅇㅈ
 # 그래서 부모 채워준다 하나씩 다 채우면 끝
 from collections import deque
 q = deque()
@@ -22,3 +22,4 @@ while q:
 
 for i in range(2, n+1):
     print(parent[i])
+  
