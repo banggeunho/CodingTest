@@ -13,24 +13,18 @@ for _ in range(n):
 
 data.sort()
 print(math.floor(sum(data)/len(data)+0.5))
-if n % 2 == 0:
-    print(data[n/2])
-else:
-    print(data[int(n/2)])
+print(data[n//2])
+temp = Counter(data).cnt.most_common()
 
-cnt = Counter(data)
-temp = cnt.most_common()
-maximum = temp[0][1]
-modes = []
-for num in temp:
-    if num[1] == maximum:
-        modes.append(num[0])
-modes.sort()
-if len(modes) > 1:
-    print(modes[1])
+if len(temp) > 1:
+  if temp[0][1] == temp[1][1]:
+    print(temp[1][0])
+  else:
+    print(temp[0][0])
 else:
-    print(modes[0])
-print(max(data)-min(data))
+  print(temp[0][0])
+  
+print(data[-1] - data[0])
 
 
 
