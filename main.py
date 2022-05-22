@@ -21,7 +21,7 @@ for num in range(n):
   result = max(result, arr[num]*(num+1))
 
 
-print(result+'123')
+print(result+'12312')
 
   
     
