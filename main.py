@@ -9,19 +9,6 @@
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****------------------------------------
 
-n = int(input())
-arr = []
-result = 0
-for _ in range(n):
-  arr.append(int(input()))
-
-arr.sort(reverse = True)
-for num in range(n):
-  result = max(result, arr[num]*(num+1))
-
-
-print(result+'12312')
-
   
     
   
