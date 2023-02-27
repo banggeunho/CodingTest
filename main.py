@@ -8,55 +8,19 @@
 # N의 범위가 10,000,000인 경우 : 시간 복잡도가 O(N)인 알고리즘을 설계
 #-------------------------****--------------------------------------------
 
-from collections import deque
 
-# 
-def catch(arr):
-  arr.popleft()
-  return arr
+# N, M, K = map(int, input().split())
+# arr = list(map(int, input().split()))
+# arr.sort()
+# firstBigNum, secondBigNum = arr[-1], arr[-2]
+# count = M//(K+1) * K + M % (K+1)  # 가장 큰 수가 더해지는 갯수
+# result = (count * firstBigNum) + ((M - count) * secondBigNum)
+# print(result)
 
-# 오른쪽으로 이동
-def mv_right(arr, idx):
-  cnt = 0
-  while dq[0] != idx:
-    arr.appendleft(arr.pop())
-    cnt += 1
-  return arr, cnt
 
-# 왼쪽으로 이동
-def mv_left(arr, idx):
-  cnt = 0
-  while dq[0] != idx:
-    arr.append(arr.popleft())
-    cnt += 1 
-  return arr, cnt
 
-n, m = map(int, input().split())
-idxs = list(map(int, input().split()))
-dq = deque([i for i in range(1, n+1)])
-result = 0
 
-while idxs:
-  # print("=====================")
-  # print(dq)
-  idx = idxs.pop(0)
-  # arr = catch(arr)
 
-  if(dq.index(idx) == 0):
-    dq = catch(dq)
-    
-  else:
-    idxs.insert(0, idx)
-    if(dq.index(idx) < len(dq)/2): # 왼쪽으로 이동하는게 더 가까울 경우
-      dq, cnt = mv_left(dq, idx)
-      result += cnt
-      # print(cnt)
-    else:
-      dq, cnt = mv_right(dq, idx)
-      result += cnt
-      # print(cnt)
-
-print(result)
   
 
 
