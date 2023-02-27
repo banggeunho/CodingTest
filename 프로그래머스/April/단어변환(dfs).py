@@ -1,7 +1,7 @@
 # 가능한 경우의 수 담는 list
 answer = []
 
-# 그래프 탐색 함수
+# graph search 함수
 def search(begin, target, words, depth):
     global answer
     for word in words:

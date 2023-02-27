@@ -1,4 +1,4 @@
-# BFS, 그래프 탐색 뭘 써도 다 풀기 가능
+# BFS, graph search 뭘 써도 다 풀기 가능
 # PARENT LIST 선언 후 PARENT가 지정 안되어있는 경우만 NODE 방문ㅇㅈ? ㅇㅈ
 # 그래서 부모 채워준다 하나씩 다 채우면 끝
 from collections import deque

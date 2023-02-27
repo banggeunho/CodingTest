@@ -88,7 +88,7 @@ array[1][1] = 5
 print(array)
 
 # list, 배열 관련 기타 메서드
-# append(), sort(), reverse(), insert(), count(), remove()
+# append(), sorting(), reverse(), insert(), count(), remove()
 # O(1),  O(NlogN), O(N),  O(N),  O(N), O(N)  - Time Complexity
 
 a = [1, 4, 3]
@@ -96,10 +96,10 @@ a.append(2)
 print('append', a)
 
 a.sort()
-print('sort', a)
+print('sorting', a)
 
 a.sort(reverse = True)
-print('descending sort', a)
+print('descending sorting', a)
 
 a.reverse()
 print('reverse', a)
@@ -229,7 +229,7 @@ print((lambda a, b: a+b)(3, 7))
 # 각 데이터를 공백으로 구분하여 입력
 # data = list(map(int, input().split()))
 
-# data.sort(reverse = True)
+# data.sorting(reverse = True)
 # print(data)
 
 # n, m, k = map(int, input().split())
