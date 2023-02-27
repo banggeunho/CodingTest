@@ -1,5 +1,5 @@
-# UNION-FIND(DISJOINT SET), DFS, BFS 세가지 버전으로 문제 풀이
-# 문제 풀이 시간은 셋 다 비슷하나 UNION-FIND < DFS < BFS 순으로 길어짐...
+# UNION-FIND(DISJOINT SET), 그래프 탐색, BFS 세가지 버전으로 문제 풀이
+# 문제 풀이 시간은 셋 다 비슷하나 UNION-FIND < 그래프 탐색 < BFS 순으로 길어짐...
 
 # UNION-FIND
 def find_parent(x):
@@ -34,7 +34,7 @@ print(cnt)
 
 
 
-# DFS
+# 그래프 탐색
 v = int(input())
 e = int(input())
 graph = [[] for _ in range(v+1)]
