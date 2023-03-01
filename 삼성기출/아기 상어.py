@@ -53,7 +53,7 @@ while True:
         break
 
     else: # 먹을 수 있는 물고기 1마리
-        mulgogi.sort() # 1마리 이상일 경우 대비해서 sort
+        mulgogi.sort() # 1마리 이상일 경우 대비해서 sorting
         dist, x, y = mulgogi[0]
         result += dist # 결과 업데이트
         graph[x][y] = 9 # 지도 업데이트
