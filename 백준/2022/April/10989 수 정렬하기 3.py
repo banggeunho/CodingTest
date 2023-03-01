@@ -1,5 +1,5 @@
 # 10989 수 정렬하기 3
-# 계수 정렬(count sorting)
+# 계수 정렬(count sort)
 import sys
 n = int(input())
 arr = [0] * 10001

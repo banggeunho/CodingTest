@@ -1,4 +1,4 @@
-# topology sorting 문제
+# topology sort 문제
 
 from collections import deque
 n, m = map(int, input().split())
