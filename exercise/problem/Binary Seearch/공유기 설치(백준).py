@@ -23,6 +23,7 @@ while start <= end:
   mid = (start+end) // 2 # mid는 가장 인접한 두 공유기 사이의 거리를(gap) 의미
   value = house[0]
   count = 1
+
   # 현재 mid값을 이용해 공유기 설치
   for i in range(1, n): #앞에서부터 순서대로 설치
     if house[i] >= value + mid:

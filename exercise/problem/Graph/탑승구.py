@@ -16,7 +16,10 @@ g = int(input())
 parent = [i for i in range(0, g+1)]
 result = 0
 for i in range(int(input())):
+    print('-----')
+    print(parent)
     data = find_parent(parent, int(input()))
+    print(data)
     if data == 0:
         break
     union_parent(parent, data, data-1)
