@@ -10,7 +10,6 @@ def calculator():
     res.append(result)
 
 def select_chicken(count):
-
     if count == m:
         print(selected_chicken)
         calculator() # 치킨 거리 계산
