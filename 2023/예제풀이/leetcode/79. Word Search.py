@@ -16,22 +16,9 @@ class Solution(object):
         self.m = len(board[0])
         self.visited = [[False] * len(board[0]) for _ in range(len(board))]
 
-        alphaDict = {}
-        wordAlphaDict = {}
         for i in range(self.n):
             for j in range(self.m):
-                alphaDict[board[i][j]] = alphaDict.get(board[i][j], 0) + 1
-
-        for i in range(len(self.word)):
-            wordAlphaDict[word[i]] = wordAlphaDict.get(word[i], 0) + 1
-
-        for alpha, count in wordAlphaDict.items():
-            if alpha not in alphaDict.keys() or alphaDict[alpha] < count:
-                return False
-
-        for i in range(self.n):
-            for j in range(self.m):
-                if board[i][j] == word[0] and not self.result:
+                if board[i][j] == word[0]:
                     self.visited[i][j] = True
                     self.dfs(i, j, board[i][j], 0)
                     self.visited[i][j] = False
@@ -39,16 +26,18 @@ class Solution(object):
         return self.result
 
     def dfs(self, x, y, temp, depth):
+        print(x, y, temp, depth, self.visited)
         if temp == self.word:
             self.result = True
-            return None
+
+        if len(temp) > len(self.word):
+            return
 
         if temp != self.word[:depth + 1]:
             print('----------')
             return None
 
-        if depth == len(self.word):
-            return None
+
 
         for i in range(4):
             nx, ny = x + self.dx[i], y + self.dy[i]
@@ -57,4 +46,8 @@ class Solution(object):
                 self.dfs(nx, ny, temp + self.board[nx][ny], depth + 1)
                 self.visited[nx][ny] = False
 
-        return None
+
+        return
+
+s = Solution()
+print(s.exist(board = [["A","A","A","A","A","A"],["A","A","A","A","A","A"],["A","A","A","A","A","A"],["A","A","A","A","A","A"],["A","A","A","A","A","A"],["A","A","A","A","A","A"]], word = "AAAAAAAAAAAABAA"))
