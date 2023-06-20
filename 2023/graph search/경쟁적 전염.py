@@ -14,16 +14,12 @@ dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
 
 def spread_virus(arr, k):
-    q = deque([k])
-
-    while q:
-        now = q.popleft()
-        for cx, cy in virus_places[now]:
-            for i in range(4):
-                nx, ny = cx + dx[i], cy + dy[i]
-                if 0 <= nx < N and 0 <= ny < N and arr[nx][ny] == 0:
-                    arr[nx][ny] = now
-                    temp[k].append((nx, ny))
+    for cx, cy in virus_places[k]:
+        for i in range(4):
+            nx, ny = cx + dx[i], cy + dy[i]
+            if 0 <= nx < N and 0 <= ny < N and arr[nx][ny] == 0:
+                arr[nx][ny] = k
+                temp[k].append((nx, ny))
 
     return arr
 
