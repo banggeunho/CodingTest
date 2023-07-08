@@ -8,4 +8,3 @@ for idx, i in enumerate(sorted(set(arr))):
 
 for i in arr:
     print(temp[i], end=' ')
-
