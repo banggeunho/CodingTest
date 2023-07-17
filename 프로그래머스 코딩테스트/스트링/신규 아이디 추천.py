@@ -15,25 +15,28 @@ def solution(new_id):
     print(f'2: {s}')
 
     # 3단계
-    temp = ''
-    continuous = False
-    for c in s:
-        if c == '.':
-            if not continuous:
-                temp += c
-                continuous = True
-                continue
-
-        else:
-            continuous = False
-            temp += c
-    s = temp
-    print(f'3: {s}')
+    # temp = ''
+    # continuous = False
+    # for c in s:
+    #     if c == '.':
+    #         if not continuous:
+    #             temp += c
+    #             continuous = True
+    #             continue
+    #
+    #     else:
+    #         continuous = False
+    #         temp += c
+    # s = temp
+    # print(f'3: {s}')
+    while '..' in s:
+        s = s.replace('..', '.') # 연속된 2개 이상의 점 지우기
 
     # 4단계
-    if s[0] == ".": s = s[1:]
-    if s and s[-1] == ".": s = s[:-1]
-    print(f'4: {s}')
+    s = s.strip('.') # 시작과 끝 지우기
+    # if s[0] == ".": s = s[1:]
+    # if s and s[-1] == ".": s = s[:-1]
+    # print(f'4: {s}')
 
     # 5단계
     if not s: s = 'a'
@@ -45,9 +48,8 @@ def solution(new_id):
     print(f'6: {s}')
 
     # 7단계
-    if len(s) <= 2:
-        while len(s) < 3:
-            s += s[-1]
+    while len(s) < 3:
+        s += s[-1]
     print(f'7: {s}')
 
     return s
