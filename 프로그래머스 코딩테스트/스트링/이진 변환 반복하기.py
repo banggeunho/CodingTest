@@ -1,4 +1,4 @@
-
+# https://school.programmers.co.kr/learn/courses/30/lessons/70129?language=python3
 def removeZero(s):
     return s.replace("0" ,"")
 
@@ -30,3 +30,15 @@ def solution(s):
         convert_cnt += 1
 
     return [convert_cnt, remove_cnt]
+
+
+def solution(s):
+    change, zero = 0, 0
+
+    while s != "1":
+        change += 1
+        num = s.count('1')
+        zero += len(s) - num
+        s = bin(num)[2:]
+
+    return [change, zero]
