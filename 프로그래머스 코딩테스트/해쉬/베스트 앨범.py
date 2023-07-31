@@ -23,12 +23,28 @@ def solution(genres, plays):
     for genre in genre_play_list:
         genre_uid_list = list(genre_uid[genre])
         genre_uid_list.sort(key=lambda x: [-uid_play[x], x])
-        count = 0
-        for uid in genre_uid_list:
+
+        for uid in genre_uid_list[:2]:
             answer.append(uid)
-            count += 1
-            if count == 2:
-                break
 
     return answer
 
+def solution(genres, plays):
+    answer = []
+
+    info = {}
+    gens = {}
+
+    for idx, (gen, play) in enumerate(zip(genres, plays)):
+        if gen not in info:
+            info[gen] = [(idx, play)]
+        else:
+            info[gen].append((idx, play))
+
+        gens[gen] = gens.get(gen, 0) + play
+
+    for (gen, _) in sorted(gens.items(), key=lambda x:x[1], reverse = True):
+        for (idx, _) in sorted(info[gen], key=lambda x:x[1], reverse= True)[:2]:
+            answer.append(idx)
+
+    return answer
