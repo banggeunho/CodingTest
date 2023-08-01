@@ -2,7 +2,7 @@
 기능개발 (프로그래머스)
 https://school.programmers.co.kr/learn/courses/30/lessons/42586
 
-스택/큐 문제 
+스택_큐/큐 문제
 '''
 from collections import deque
 

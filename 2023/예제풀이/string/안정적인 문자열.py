@@ -9,12 +9,12 @@ while True:
     if '-' in string:
         break
 
-    # 스택
+    # 스택_큐
     stack = []
 
     # 키 알고리즘
     for i in range(len(string)):
-        # 여는 괄호일 경우 스택 추가
+        # 여는 괄호일 경우 스택_큐 추가
         if string[i] == '{':
             stack.append(string[i])
 
