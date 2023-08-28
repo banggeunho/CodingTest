@@ -32,12 +32,12 @@ def solution(gems):
     start = end = 0
     # 즉, 보석의 한 종류 이상 가졌을 경우 맨 앞의 보석을 팔고 그걸 기준으로 다시 탐색 진행하면서 최소 구간을 찾기
     while end < size:  # 전체 보석을 탐색
-        if len(dic) < kind:  # 즉, 보석 한 종류 이상 가지지 못했을 경우
+        if len(dic) < kind:  # 즉, 모든 종류의 보석을 갖지 못했을 경우
             end += 1
-            if end == size: break  # 가졌으면 break
+            if end == size: break  # 진열대에 있는 모든 보석을 가졌으면 break
             dic[gems[end]] = dic.get(gems[end], 0) + 1  # 아니면 종류를 채워 넣는다.
         else:  # 보석을 다 채웠을 경우
-            if (end - start + 1) < (answer[1] - answer[0] + 1): answer = [start, end]  # 값을 비교하여 갱신
+            if (end - start + 1) < (answer[1] - answer[0] + 1): answer = [start, end]  # 값을 비교하여 갱신 (최솟값으로 갱신)
             if dic[gems[start]] == 1:
                 del dic[gems[start]]  # start 지점의 보석이 이미 있으면 지워줌
             else:
