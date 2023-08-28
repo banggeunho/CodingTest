@@ -1,3 +1,4 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/77885
 def f(x):
     # 짝수면 1 더한게 최솟값
     if x % 2 == 0: return x + 1
